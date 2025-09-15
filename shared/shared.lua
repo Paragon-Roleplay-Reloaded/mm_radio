@@ -37,7 +37,7 @@ Shared.RadioItem = {
 
 ---@type Battery
 Shared.Battery = {
-    state = false,     -- to use battery system or not
+    state = true,      -- to use battery system or not
     consume = 1,       -- battery consume rate
     depletionTime = 1, -- in minute, every 1 minute battery will decrease by consume value
 }
