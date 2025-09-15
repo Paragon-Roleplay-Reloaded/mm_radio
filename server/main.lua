@@ -4,7 +4,7 @@ local batteryData = {}
 local spawnedDefaultJammer = false
 
 RegisterNetEvent('mm_radio:server:consumeBattery', function(data)
-    for i=1, #data do
+    for i = 1, #data do
         local id = data[i]
         if not batteryData[id] then batteryData[id] = 100 end
         local battery = batteryData[id] - Shared.Battery.consume
@@ -17,7 +17,7 @@ end)
 
 RegisterNetEvent('mm_radio:server:rechargeBattery', function()
     local src = source
-    for i=1, #Shared.RadioItem do
+    for i = 1, #Shared.RadioItem do
         local item = exports.ox_inventory:GetSlotWithItem(src, Shared.RadioItem[i])
         if item then
             local id = item.metadata?.radioId or false
@@ -31,10 +31,11 @@ end)
 
 RegisterNetEvent('mm_radio:server:spawnobject', function(data)
     local src = source
-	CreateThread(function()
-		local entity = CreateObject(joaat(Shared.Jammer.model), data.coords.x, data.coords.y, data.coords.z, true, true, false)
-		while not DoesEntityExist(entity) do Wait(50) end
-		SetEntityHeading(entity, data.coords.w)
+    CreateThread(function()
+        local entity = CreateObject(joaat(Shared.Jammer.model), data.coords.x, data.coords.y, data.coords.z, true, true,
+            false)
+        while not DoesEntityExist(entity) do Wait(50) end
+        SetEntityHeading(entity, data.coords.w)
         local netobj = NetworkGetNetworkIdFromEntity(entity)
         if data.canRemove then
             exports.ox_inventory:RemoveItem(src, 'jammer', 1)
@@ -49,7 +50,7 @@ RegisterNetEvent('mm_radio:server:spawnobject', function(data)
             canRemove = data.canRemove,
             canDamage = data.canDamage
         })
-        jammer[#jammer+1] = {
+        jammer[#jammer + 1] = {
             enable = true,
             entity = entity,
             id = data.id,
@@ -59,11 +60,11 @@ RegisterNetEvent('mm_radio:server:spawnobject', function(data)
             canRemove = data.canRemove,
             canDamage = data.canDamage
         }
-	end)
+    end)
 end)
 
 RegisterNetEvent('mm_radio:server:togglejammer', function(id)
-    for i=1, #jammer do
+    for i = 1, #jammer do
         local entity = jammer[i]
         if entity.id == id then
             jammer[i].enable = not jammer[i].enable
@@ -75,8 +76,8 @@ end)
 
 RegisterNetEvent('mm_radio:server:removejammer', function(id, isDamaged)
     local src = source
-	CreateThread(function()
-        for i=1, #jammer do
+    CreateThread(function()
+        for i = 1, #jammer do
             local entity = jammer[i]
             if entity.id == id then
                 DeleteEntity(entity.entity)
@@ -88,11 +89,11 @@ RegisterNetEvent('mm_radio:server:removejammer', function(id, isDamaged)
                 break
             end
         end
-	end)
+    end)
 end)
 
 RegisterNetEvent('mm_radio:server:changeJammerRange', function(id, range)
-    for i=1, #jammer do
+    for i = 1, #jammer do
         local entity = jammer[i]
         if entity.id == id then
             jammer[i].range = range
@@ -103,7 +104,7 @@ RegisterNetEvent('mm_radio:server:changeJammerRange', function(id, range)
 end)
 
 RegisterNetEvent('mm_radio:server:removeallowedchannel', function(id, allowedChannels)
-    for i=1, #jammer do
+    for i = 1, #jammer do
         local entity = jammer[i]
         if entity.id == id then
             jammer[i].allowedChannels = allowedChannels
@@ -114,7 +115,7 @@ RegisterNetEvent('mm_radio:server:removeallowedchannel', function(id, allowedCha
 end)
 
 RegisterNetEvent('mm_radio:server:addallowedchannel', function(id, allowedChannels)
-    for i=1, #jammer do
+    for i = 1, #jammer do
         local entity = jammer[i]
         if entity.id == id then
             jammer[i].allowedChannels = allowedChannels
@@ -129,7 +130,7 @@ RegisterNetEvent('mm_radio:server:addToRadioChannel', function(channel, username
     if not channels[channel] then
         channels[channel] = {}
     end
-    channels[channel][tostring(src)] = {name = username, isTalking = false}
+    channels[channel][tostring(src)] = { name = username, isTalking = false }
     TriggerClientEvent('mm_radio:client:radioListUpdate', -1, channels[channel], channel)
 end)
 
@@ -143,7 +144,7 @@ end)
 
 AddEventHandler('onResourceStop', function(resourceName)
     if (GetCurrentResourceName() ~= resourceName) then return end
-    for i=1, #jammer do
+    for i = 1, #jammer do
         DeleteEntity(jammer[i].entity)
     end
     jammer = {}
@@ -157,7 +158,7 @@ end)
 
 AddEventHandler("playerDropped", function()
     local plyid = source
-    for id, channel in pairs (channels) do
+    for id, channel in pairs(channels) do
         if channel[tostring(plyid)] then
             channels[id][tostring(plyid)] = nil
             TriggerClientEvent('mm_radio:client:radioListUpdate', -1, channels[id], id)
@@ -168,7 +169,7 @@ end)
 
 RegisterNetEvent("mm_radio:server:createdefaultjammer", function()
     if spawnedDefaultJammer then return end
-    for i=1, #Shared.Jammer.default do
+    for i = 1, #Shared.Jammer.default do
         local data = Shared.Jammer.default[i]
         TriggerEvent('mm_radio:server:spawnobject', {
             coords = data.coords,
@@ -191,7 +192,7 @@ local function SetRadioData(src, slot)
 end
 
 local function GetSlotWithRadio(source)
-    for i=1, #Shared.RadioItem do
+    for i = 1, #Shared.RadioItem do
         return exports.ox_inventory:GetSlotIdWithItem(source, Shared.RadioItem[i])
     end
 end

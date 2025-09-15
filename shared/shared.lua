@@ -13,10 +13,10 @@ Shared.LeaveOnDeath = true -- Should the player leave the radio channel when the
 
 ---@type Jammer
 Shared.Jammer = {
-    state = false, -- to use jammer system or not
+    state = false,                 -- to use jammer system or not
     model = 'sm_prop_smug_jammer', -- prop to spawn for jammer
-    permission = {"police"}, -- permission how can setup jammer (job/gang)
-    default = {}, -- default jammer setup location
+    permission = { "police" },     -- permission how can setup jammer (job/gang)
+    default = {},                  -- default jammer setup location
     range = {
         min = 10.0,
         max = 100.0,
@@ -37,14 +37,14 @@ Shared.RadioItem = {
 
 ---@type Battery
 Shared.Battery = {
-    state = false, -- to use battery system or not
-    consume = 1, -- battery consume rate
+    state = false,     -- to use battery system or not
+    consume = 1,       -- battery consume rate
     depletionTime = 1, -- in minute, every 1 minute battery will decrease by consume value
 }
 
 ---@type [string]: string
 Shared.RadioNames = {
-    ["1"] = "MRPD CH#1", -- channel value 1
+    ["1"] = "MRPD CH#1",   -- channel value 1
     ["1.%"] = "MRPD CH#1", -- channel value 1.%%%% string formatter
     ["2"] = "MRPD CH#2",
     ["2.%"] = "MRPD CH#2",
@@ -73,57 +73,57 @@ Shared.RadioNames = {
 }
 
 Shared.RestrictedChannels = {
-    [1] = { -- channel id
+    [1] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [2] = { -- channel id
+    [2] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [3] = { -- channel id
+    [3] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [4] = { -- channel id
+    [4] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [5] = { -- channel id
+    [5] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [6] = { -- channel id
+    [6] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [7] = { -- channel id
+    [7] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [8] = { -- channel id
+    [8] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [9] = { -- channel id
+    [9] = {           -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [10] = { -- channel id
+    [10] = {          -- channel id
         type = 'job', -- job/gang
-        name = {"police", "ambulance"}
+        name = { "police", "ambulance" }
     },
-    [420] = { -- channel id
+    [420] = {          -- channel id
         type = 'gang', -- job/gang
-        name = {"ballas"}
+        name = { "ballas" }
     },
-    [421] = { -- channel id
+    [421] = {          -- channel id
         type = 'gang', -- job/gang
-        name = {"lostmc"}
+        name = { "lostmc" }
     },
     [422] = {
         type = 'gang', -- job/gang
-        name = {"vagos"}
+        name = { "vagos" }
     },
 }
 

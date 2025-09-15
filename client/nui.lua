@@ -22,7 +22,7 @@ end)
 RegisterNUICallback('toggleMute', function(volume, cb)
     volume = tonumber(volume)
     Radio:Notify(locale(volume == 0 and 'toggle_defean' or 'toggle_undeafen'))
-	exports["pma-voice"]:setRadioVolume(volume)
+    exports["pma-voice"]:setRadioVolume(volume)
     Radio.Volume = volume
     cb('ok')
 end)
@@ -30,7 +30,7 @@ end)
 RegisterNUICallback("volumeChange", function(data, cb)
     data = tonumber(data)
     Radio:Notify(locale('volume_notify_description', data))
-	exports["pma-voice"]:setRadioVolume(data)
+    exports["pma-voice"]:setRadioVolume(data)
     Radio.Volume = data
     cb('ok')
 end)
@@ -43,8 +43,8 @@ end)
 RegisterNUICallback('addFav', function(data, cb)
     data = tonumber(data)
     if Radio.RadioChannel == data then
-        Radio.favourite[#Radio.favourite+1] = data
-        Radio.userData[Radio.identifier].favourite[#Radio.userData[Radio.identifier].favourite+1] = data
+        Radio.favourite[#Radio.favourite + 1] = data
+        Radio.userData[Radio.identifier].favourite[#Radio.userData[Radio.identifier].favourite + 1] = data
         SetResourceKvp('radioSettings2', json.encode(Radio.userData))
     end
     cb("ok")

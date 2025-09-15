@@ -73,7 +73,7 @@ end)
 RegisterNetEvent('mm_radio:client:syncobject', function(data)
     local entity = NetworkGetEntityFromNetworkId(data.object)
     SetEntityCanBeDamaged(entity, data.canDamage)
-    Radio.jammer[#Radio.jammer+1] = {
+    Radio.jammer[#Radio.jammer + 1] = {
         id = data.id,
         entity = entity,
         coords = data.coords,
@@ -103,7 +103,7 @@ RegisterNetEvent('mm_radio:client:syncobject', function(data)
 end)
 
 RegisterNetEvent('mm_radio:client:changeJammerRange', function(id, range)
-    for i=1, #Radio.jammer do
+    for i = 1, #Radio.jammer do
         local entity = Radio.jammer[i]
         if entity.id == id then
             entity.zone:remove()
@@ -124,7 +124,7 @@ RegisterNetEvent('mm_radio:client:changeJammerRange', function(id, range)
 end)
 
 RegisterNetEvent('mm_radio:client:removeallowedchannel', function(id, allowedChannels)
-    for i=1, #Radio.jammer do
+    for i = 1, #Radio.jammer do
         local entity = Radio.jammer[i]
         if entity.id == id then
             entity.allowedChannels = allowedChannels
@@ -135,7 +135,7 @@ RegisterNetEvent('mm_radio:client:removeallowedchannel', function(id, allowedCha
 end)
 
 RegisterNetEvent('mm_radio:client:addallowedchannel', function(id, allowedChannels)
-    for i=1, #Radio.jammer do
+    for i = 1, #Radio.jammer do
         local entity = Radio.jammer[i]
         if entity.id == id then
             entity.allowedChannels = allowedChannels
@@ -146,7 +146,7 @@ RegisterNetEvent('mm_radio:client:addallowedchannel', function(id, allowedChanne
 end)
 
 RegisterNetEvent('mm_radio:client:togglejammer', function(id, state)
-    for i=1, #Radio.jammer do
+    for i = 1, #Radio.jammer do
         local entity = Radio.jammer[i]
         if entity.id == id then
             entity.enable = state
@@ -160,7 +160,6 @@ RegisterNetEvent('mm_radio:client:togglejammer', function(id, state)
                     onEnter = OnEnterJammerZone,
                     onExit = OnExitJammerZone
                 })
-
             else
                 entity.zone:remove()
                 Radio:UpdateJammerRemove(id)
@@ -171,7 +170,7 @@ RegisterNetEvent('mm_radio:client:togglejammer', function(id, state)
 end)
 
 RegisterNetEvent('mm_radio:client:removejammer', function(id)
-    for i=1, #Radio.jammer do
+    for i = 1, #Radio.jammer do
         local entity = Radio.jammer[i]
         if entity.id == id then
             entity.zone:remove()
