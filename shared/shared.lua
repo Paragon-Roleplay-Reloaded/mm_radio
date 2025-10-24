@@ -1,9 +1,6 @@
 ---@type number
 Shared.MaxFrequency = 500.00 -- Max Limit of Radio Channel
 
----@type boolean
-Shared.LeaveOnDeath = true -- Should the player leave the radio channel when they die
-
 ---@class Jammer
 ---@field state boolean
 ---@field model string
@@ -13,10 +10,10 @@ Shared.LeaveOnDeath = true -- Should the player leave the radio channel when the
 
 ---@type Jammer
 Shared.Jammer = {
-    state = false,                 -- to use jammer system or not
-    model = 'sm_prop_smug_jammer', -- prop to spawn for jammer
-    permission = { "police" },     -- permission how can setup jammer (job/gang)
-    default = {},                  -- default jammer setup location
+    state = false,                              -- to use jammer system or not
+    model = 'sm_prop_smug_jammer',              -- prop to spawn for jammer
+    permission = { "police", "lscso", "sast" }, -- permission how can setup jammer (job/gang)
+    default = {},                               -- default jammer setup location
     range = {
         min = 10.0,
         max = 100.0,
@@ -44,26 +41,26 @@ Shared.Battery = {
 
 ---@type [string]: string
 Shared.RadioNames = {
-    ["1"] = "MRPD CH#1",   -- channel value 1
-    ["1.%"] = "MRPD CH#1", -- channel value 1.%%%% string formatter
-    ["2"] = "MRPD CH#2",
-    ["2.%"] = "MRPD CH#2",
-    ["3"] = "MRPD CH#3",
-    ["3.%"] = "MRPD CH#3",
-    ["4"] = "MRPD CH#4",
-    ["4.%"] = "MRPD CH#4",
-    ["5"] = "MRPD CH#5",
-    ["5.%"] = "MRPD CH#5",
-    ["6"] = "MRPD CH#6",
-    ["6.%"] = "MRPD CH#6",
-    ["7"] = "MRPD CH#7",
-    ["7.%"] = "MRPD CH#7",
-    ["8"] = "MRPD CH#8",
-    ["8.%"] = "MRPD CH#8",
-    ["9"] = "MRPD CH#9",
-    ["9.%"] = "MRPD CH#9",
-    ["10"] = "MRPD CH#10",
-    ["10.%"] = "MRPD CH#10",
+    ["1"] = "LSPD CH#1",   -- channel value 1
+    ["1.%"] = "LSPD CH#1", -- channel value 1.%%%% string formatter
+    ["2"] = "LSCSO CH#2",
+    ["2.%"] = "LSCSO CH#2",
+    ["3"] = "SAST CH#3",
+    ["3.%"] = "SAST CH#3",
+    ["4"] = "EMS CH#4",
+    ["4.%"] = "EMS CH#4",
+    ["5"] = "DPS CH#5",
+    ["5.%"] = "DPS CH#5",
+    ["6"] = "DPS CH#6",
+    ["6.%"] = "DPS CH#6",
+    ["7"] = "DPS CH#7",
+    ["7.%"] = "DPS CH#7",
+    ["8"] = "DPS CH#8",
+    ["8.%"] = "DPS CH#8",
+    ["9"] = "DPS CH#9",
+    ["9.%"] = "DPS CH#9",
+    ["10"] = "DPS CH#10",
+    ["10.%"] = "DPS CH#10",
     ["420"] = "Ballas CH#1",
     ["420.%"] = "Ballas CH#1",
     ["421"] = "LostMC CH#1",
@@ -75,43 +72,43 @@ Shared.RadioNames = {
 Shared.RestrictedChannels = {
     [1] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [2] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [3] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [4] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [5] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [6] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [7] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [8] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [9] = {           -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [10] = {          -- channel id
         type = 'job', -- job/gang
-        name = { "police", "ambulance" }
+        name = { "police", "ambulance", "lscso", "sast" }
     },
     [420] = {          -- channel id
         type = 'gang', -- job/gang
